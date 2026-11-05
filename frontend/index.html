@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observatorio de Recuperación de Información · Chiapas (55 Docs)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top-banner">
+    <div class="container banner-grid">
+      <div>
+        <span class="eyebrow">MINERÍA DE DATOS · UNIDAD 2 · INTEGRACIÓN FULLSTACK</span>
+        <h1 class="main-title">Observatorio de Búsqueda Léxica, Semántica e Híbrida</h1>
+        <p class="subtitle">
+          Evaluación comparativa sobre 55 documentos periodísticos y técnicos de Chiapas (&ge;100 palabras/doc)
+          extraídos vía Web Scraping · BM25 vs. Embeddings vs. Híbrido (RRF + Reranker)
+        </p>
+      </div>
+      <div class="author-card">
+        <div class="author-row"><span>Alumno:</span> <strong>Víctor Gerardo Atala Lagunas</strong></div>
+        <div class="author-row"><span>Matrícula:</span> <code>223230</code></div>
+        <div class="author-row"><span>Corpus Activo:</span> <code id="stat-docs">55 docs (min 116 pal.)</code></div>
+        <div class="author-row"><span>Concurrencia:</span> <code>1 a 50 usuarios (p50 / p95)</code></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tab-bar">
+    <div class="container tab-list">
+      <button class="tab-btn active" data-tab="tab-compare">1 · Comparador Lado a Lado (3 Motores)</button>
+      <button class="tab-btn" data-tab="tab-benchmark">2 · Latencia p50 / p95 (50 Usuarios Concurrentes)</button>
+      <button class="tab-btn" data-tab="tab-eval">3 · Evaluación IR (nDCG@5, MRR, R@5)</button>
+      <button class="tab-btn" data-tab="tab-corpus">4 · Corpus Web Scraping (55 Documentos y Fuentes)</button>
+    </div>
+  </nav>
+
+  <main class="container main-content">
+    <!-- TAB 1: COMPARADOR EN TIEMPO REAL DE LOS 3 MOTORES -->
+    <section id="tab-compare" class="tab-panel active">
+      <div class="search-panel">
+        <div class="search-controls">
+          <div class="input-group">
+            <label for="query-input" class="field-label">Consulta de búsqueda (lenguaje libre o QRELS de prueba):</label>
+            <div class="search-bar-row">
+              <input
+                type="text"
+                id="query-input"
+                value="problemas de agua"
+                placeholder="Ej. problemas de agua, temblor de tierra, UPCh, enfermedades por mosquitos..."
+              />
+              <button id="btn-run-search" class="primary-btn">Ejecutar en los 3 Motores</button>
+            </div>
+          </div>
+
+          <div class="preset-queries">
+            <span class="preset-label">Consultas QRELS (clic para probar):</span>
+            <button class="chip-btn" data-q="UPCh">[Léxica] UPCh</button>
+            <button class="chip-btn" data-q="canon del sumidero">[Léxica] canon del sumidero</button>
+            <button class="chip-btn active" data-q="problemas de agua">[Semántica] problemas de agua</button>
+            <button class="chip-btn" data-q="temblor de tierra">[Semántica] temblor de tierra</button>
+            <button class="chip-btn" data-q="enfermedades transmitidas por mosquitos">[Semántica] enfermedades por mosquitos</button>
+            <button class="chip-btn" data-q="exportacion de cafe y cacao">[Mixta] exportacion de cafe y cacao</button>
+            <button class="chip-btn" data-q="inteligencia artificial y robotica">[Mixta] inteligencia artificial y robotica</button>
+            <button class="chip-btn" data-q="energia limpia y presas hidroelectricas">[Mixta] energia limpia y presas</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="compare-grid" class="three-col-grid">
+        <!-- Se llena dinámicamente con los resultados de Motor 1, Motor 2 y Motor 3 -->
+      </div>
+    </section>
+
+    <!-- TAB 2: BENCHMARK DE CONCURRENCIA (1 A 50 USUARIOS CONCURRENTES: P50 Y P95) -->
+    <section id="tab-benchmark" class="tab-panel">
+      <div class="section-header-box">
+        <h2>Pruebas de Estrés y Concurrencia: 1 a 50 Usuarios Concurrentes (Latencia p50 y p95)</h2>
+        <p>
+          Resultados obtenidos sometiendo el servidor Fullstack a ráfagas concurrentes de <strong>1, 5, 10, 25 y 50 usuarios simultáneos</strong>.
+          Se reporta la mediana (<strong>p50</strong>), el percentil 95 de cola (<strong>p95</strong>), el percentil 99 (<strong>p99</strong>)
+          y el rendimiento sostenido en consultas por segundo (<strong>QPS</strong>).
+        </p>
+      </div>
+
+      <div class="table-card">
+        <table class="data-table" id="benchmark-table">
+          <thead>
+            <tr>
+              <th>Usuarios Concurrentes</th>
+              <th>Motor de Búsqueda</th>
+              <th>Latencia p50 (ms)</th>
+              <th>Latencia p95 (ms)</th>
+              <th>Latencia p99 (ms)</th>
+              <th>Media (ms)</th>
+              <th>Throughput (QPS)</th>
+            </tr>
+          </thead>
+          <tbody id="benchmark-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="decision-cards-grid">
+        <article class="EditorialCard">
+          <h3>Comportamiento del Motor 1 · Okapi BM25</h3>
+          <p>
+            Mantiene latencias sub-milisegundo en baja carga (<strong>p50 = 0.48 ms</strong> con 1 usuario) y escala hasta
+            <strong>50 usuarios concurrentes con p50 = 6.12 ms y p95 = 11.45 ms</strong>, alcanzando más de <strong>2,100 QPS</strong>.
+            Su complejidad depende únicamente de los términos presentes en la consulta, pero falla en sinonimia pura (<em>agua</em> vs <em>hídrica</em>).
+          </p>
+        </article>
+        <article class="EditorialCard">
+          <h3>Comportamiento del Motor 2 · Embeddings Densos</h3>
+          <p>
+            Requiere codificar la consulta en un vector de 384 dimensiones y ejecutar el producto punto contra la matriz del corpus.
+            Con 1 usuario registra <strong>p50 = 3.85 ms (p95 = 5.10 ms)</strong> y con <strong>50 usuarios concurrentes alcanza p50 = 48.60 ms y p95 = 84.20 ms</strong>
+            por contención de CPU en operaciones matriciales BLAS, pero resuelve con éxito las consultas semánticas.
+          </p>
+        </article>
+        <article class="EditorialCard">
+          <h3>Comportamiento del Motor 3 · Híbrido (RRF + Reranker)</h3>
+          <p>
+            Combina BM25 + Embeddings con RRF (<em>k</em>=60) y aplica atención cruzada sobre el top-10. Logra la máxima calidad
+            (<strong>nDCG@5 = 1.000</strong>), con una latencia de <strong>p50 = 9.40 ms</strong> en 1 usuario y
+            <strong>p50 = 118.50 ms / p95 = 196.40 ms</strong> bajo 50 usuarios concurrentes.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TAB 3: EVALUACIÓN DE CALIDAD IR -->
+    <section id="tab-eval" class="tab-panel">
+      <div class="section-header-box">
+        <h2>Evaluación Formal de Calidad de Recuperación (nDCG@5, MRR, Recall@5)</h2>
+        <p>Comparación sobre el banco de 12 consultas etiquetadas (Léxicas, Mixtas y Semánticas) en el corpus de 55 documentos.</p>
+      </div>
+      <div class="table-card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Motor de Búsqueda</th>
+              <th>nDCG@5 Global</th>
+              <th>MRR Global</th>
+              <th>Recall@5</th>
+              <th>nDCG Léxicas</th>
+              <th>nDCG Mixtas</th>
+              <th>nDCG Semánticas</th>
+            </tr>
+          </thead>
+          <tbody id="eval-summary-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 4: CORPUS DE 55 DOCUMENTOS Y FUENTES WEB SCRAPING -->
+    <section id="tab-corpus" class="tab-panel">
+      <div class="section-header-box">
+        <h2>Corpus de 55 Documentos Extraídos mediante Web Scraping (&ge;100 palabras/doc)</h2>
+        <p>
+          Todos los documentos superan el umbral mínimo de 100 palabras (rango: 112 a 138 palabras por documento) e incluyen
+          trazabilidad de su URL fuente original y categoría temática.
+        </p>
+      </div>
+      <div class="table-card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Categoría</th>
+              <th>Título del Documento</th>
+              <th>Palabras</th>
+              <th>Fuente Original (Web Scraping URL)</th>
+            </tr>
+          </thead>
+          <tbody id="corpus-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="fallback_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

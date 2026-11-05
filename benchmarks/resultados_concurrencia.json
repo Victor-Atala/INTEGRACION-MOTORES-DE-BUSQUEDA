@@ -1,0 +1,711 @@
+{
+  "niveles_usuarios": [
+    1,
+    5,
+    10,
+    25,
+    50
+  ],
+  "niveles": [
+    {
+      "usuarios_concurrentes": 1,
+      "motor": "bm25",
+      "nombre_motor": "Motor 1 · Léxico Probabilístico (Okapi BM25)",
+      "total_peticiones": 12,
+      "p50_ms": 0.51,
+      "p95_ms": 0.57,
+      "p99_ms": 0.57,
+      "media_ms": 0.51,
+      "qps": 1941.8
+    },
+    {
+      "usuarios_concurrentes": 1,
+      "motor": "embeddings",
+      "nombre_motor": "Motor 2 · Semántico Denso (Embeddings 384d)",
+      "total_peticiones": 12,
+      "p50_ms": 4.32,
+      "p95_ms": 4.81,
+      "p99_ms": 4.88,
+      "media_ms": 4.4,
+      "qps": 227.3
+    },
+    {
+      "usuarios_concurrentes": 1,
+      "motor": "hibrido",
+      "nombre_motor": "Motor 3 · Híbrido (RRF k=60 + Reranker)",
+      "total_peticiones": 12,
+      "p50_ms": 12.36,
+      "p95_ms": 15.26,
+      "p99_ms": 15.92,
+      "media_ms": 12.49,
+      "qps": 80.1
+    },
+    {
+      "usuarios_concurrentes": 5,
+      "motor": "bm25",
+      "nombre_motor": "Motor 1 · Léxico Probabilístico (Okapi BM25)",
+      "total_peticiones": 60,
+      "p50_ms": 1.31,
+      "p95_ms": 2.17,
+      "p99_ms": 2.54,
+      "media_ms": 1.4,
+      "qps": 3568.2
+    },
+    {
+      "usuarios_concurrentes": 5,
+      "motor": "embeddings",
+      "nombre_motor": "Motor 2 · Semántico Denso (Embeddings 384d)",
+      "total_peticiones": 60,
+      "p50_ms": 11.45,
+      "p95_ms": 17.66,
+      "p99_ms": 22.59,
+      "media_ms": 12.15,
+      "qps": 411.4
+    },
+    {
+      "usuarios_concurrentes": 5,
+      "motor": "hibrido",
+      "nombre_motor": "Motor 3 · Híbrido (RRF k=60 + Reranker)",
+      "total_peticiones": 60,
+      "p50_ms": 30.0,
+      "p95_ms": 45.71,
+      "p99_ms": 47.99,
+      "media_ms": 31.79,
+      "qps": 157.3
+    },
+    {
+      "usuarios_concurrentes": 10,
+      "motor": "bm25",
+      "nombre_motor": "Motor 1 · Léxico Probabilístico (Okapi BM25)",
+      "total_peticiones": 120,
+      "p50_ms": 2.22,
+      "p95_ms": 3.2,
+      "p99_ms": 3.98,
+      "media_ms": 2.3,
+      "qps": 4070.0
+    },
+    {
+      "usuarios_concurrentes": 10,
+      "motor": "embeddings",
+      "nombre_motor": "Motor 2 · Semántico Denso (Embeddings 384d)",
+      "total_peticiones": 120,
+      "p50_ms": 20.75,
+      "p95_ms": 30.55,
+      "p99_ms": 34.25,
+      "media_ms": 21.95,
+      "qps": 425.7
+    },
+    {
+      "usuarios_concurrentes": 10,
+      "motor": "hibrido",
+      "nombre_motor": "Motor 3 · Híbrido (RRF k=60 + Reranker)",
+      "total_peticiones": 120,
+      "p50_ms": 53.29,
+      "p95_ms": 72.01,
+      "p99_ms": 80.07,
+      "media_ms": 54.19,
+      "qps": 172.4
+    },
+    {
+      "usuarios_concurrentes": 25,
+      "motor": "bm25",
+      "nombre_motor": "Motor 1 · Léxico Probabilístico (Okapi BM25)",
+      "total_peticiones": 200,
+      "p50_ms": 4.96,
+      "p95_ms": 8.29,
+      "p99_ms": 9.76,
+      "media_ms": 5.22,
+      "qps": 3738.6
+    },
+    {
+      "usuarios_concurrentes": 25,
+      "motor": "embeddings",
+      "nombre_motor": "Motor 2 · Semántico Denso (Embeddings 384d)",
+      "total_peticiones": 200,
+      "p50_ms": 43.23,
+      "p95_ms": 68.98,
+      "p99_ms": 82.6,
+      "media_ms": 45.93,
+      "qps": 425.2
+    },
+    {
+      "usuarios_concurrentes": 25,
+      "motor": "hibrido",
+      "nombre_motor": "Motor 3 · Híbrido (RRF k=60 + Reranker)",
+      "total_peticiones": 200,
+      "p50_ms": 117.69,
+      "p95_ms": 179.13,
+      "p99_ms": 199.46,
+      "media_ms": 123.72,
+      "qps": 157.9
+    },
+    {
+      "usuarios_concurrentes": 50,
+      "motor": "bm25",
+      "nombre_motor": "Motor 1 · Léxico Probabilístico (Okapi BM25)",
+      "total_peticiones": 400,
+      "p50_ms": 9.83,
+      "p95_ms": 15.79,
+      "p99_ms": 18.12,
+      "media_ms": 10.25,
+      "qps": 2994.0
+    },
+    {
+      "usuarios_concurrentes": 50,
+      "motor": "embeddings",
+      "nombre_motor": "Motor 2 · Semántico Denso (Embeddings 384d)",
+      "total_peticiones": 400,
+      "p50_ms": 81.08,
+      "p95_ms": 133.45,
+      "p99_ms": 171.78,
+      "media_ms": 86.88,
+      "qps": 353.1
+    },
+    {
+      "usuarios_concurrentes": 50,
+      "motor": "hibrido",
+      "nombre_motor": "Motor 3 · Híbrido (RRF k=60 + Reranker)",
+      "total_peticiones": 400,
+      "p50_ms": 221.56,
+      "p95_ms": 335.99,
+      "p99_ms": 418.39,
+      "media_ms": 230.5,
+      "qps": 133.1
+    }
+  ],
+  "curvas_por_motor": {
+    "bm25": {
+      "usuarios": [
+        1,
+        5,
+        10,
+        25,
+        50
+      ],
+      "p50_ms": [
+        0.51,
+        1.31,
+        2.22,
+        4.96,
+        9.83
+      ],
+      "p95_ms": [
+        0.57,
+        2.17,
+        3.2,
+        8.29,
+        15.79
+      ],
+      "p99_ms": [
+        0.57,
+        2.54,
+        3.98,
+        9.76,
+        18.12
+      ],
+      "media_ms": [
+        0.51,
+        1.4,
+        2.3,
+        5.22,
+        10.25
+      ],
+      "qps": [
+        1941.8,
+        3568.2,
+        4070.0,
+        3738.6,
+        2994.0
+      ]
+    },
+    "embeddings": {
+      "usuarios": [
+        1,
+        5,
+        10,
+        25,
+        50
+      ],
+      "p50_ms": [
+        4.32,
+        11.45,
+        20.75,
+        43.23,
+        81.08
+      ],
+      "p95_ms": [
+        4.81,
+        17.66,
+        30.55,
+        68.98,
+        133.45
+      ],
+      "p99_ms": [
+        4.88,
+        22.59,
+        34.25,
+        82.6,
+        171.78
+      ],
+      "media_ms": [
+        4.4,
+        12.15,
+        21.95,
+        45.93,
+        86.88
+      ],
+      "qps": [
+        227.3,
+        411.4,
+        425.7,
+        425.2,
+        353.1
+      ]
+    },
+    "hibrido": {
+      "usuarios": [
+        1,
+        5,
+        10,
+        25,
+        50
+      ],
+      "p50_ms": [
+        12.36,
+        30.0,
+        53.29,
+        117.69,
+        221.56
+      ],
+      "p95_ms": [
+        15.26,
+        45.71,
+        72.01,
+        179.13,
+        335.99
+      ],
+      "p99_ms": [
+        15.92,
+        47.99,
+        80.07,
+        199.46,
+        418.39
+      ],
+      "media_ms": [
+        12.49,
+        31.79,
+        54.19,
+        123.72,
+        230.5
+      ],
+      "qps": [
+        80.1,
+        157.3,
+        172.4,
+        157.9,
+        133.1
+      ]
+    }
+  },
+  "evaluacion_ir": {
+    "total_documentos": 55,
+    "total_consultas_qrels": 12,
+    "resumen_motores": [
+      {
+        "codigo": "bm25",
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "nDCG@5": 0.6996,
+        "MRR": 0.7917,
+        "R@5": 0.6486,
+        "nDCG_lexica": 1.0,
+        "nDCG_mixta": 0.7874,
+        "nDCG_semantica": 0.2945,
+        "latencia_media_ms": 0.052
+      },
+      {
+        "codigo": "embeddings",
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "nDCG@5": 0.8105,
+        "MRR": 0.9167,
+        "R@5": 0.8806,
+        "nDCG_lexica": 0.8291,
+        "nDCG_mixta": 0.7584,
+        "nDCG_semantica": 0.9195,
+        "latencia_media_ms": 1.063
+      },
+      {
+        "codigo": "hibrido",
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "nDCG@5": 0.9711,
+        "MRR": 1.0,
+        "R@5": 0.9625,
+        "nDCG_lexica": 1.0,
+        "nDCG_mixta": 0.9508,
+        "nDCG_semantica": 0.9989,
+        "latencia_media_ms": 4.404
+      }
+    ],
+    "detalle_consultas": [
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "UPCh",
+        "tipo": "lexica",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d07"
+      },
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "canon del sumidero",
+        "tipo": "lexica",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d05"
+      },
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "problemas de agua",
+        "tipo": "semantica",
+        "nDCG@5": 0.8835,
+        "MRR": 1.0,
+        "R@5": 0.75,
+        "top1_doc": "d13"
+      },
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "temblor de tierra",
+        "tipo": "semantica",
+        "nDCG@5": 0.0,
+        "MRR": 0.0,
+        "R@5": 0.0,
+        "top1_doc": "d11"
+      },
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "enfermedades transmitidas por mosquitos",
+        "tipo": "semantica",
+        "nDCG@5": 0.0,
+        "MRR": 0.0,
+        "R@5": 0.0,
+        "top1_doc": "d50"
+      },
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "sequia y cultivos",
+        "tipo": "mixta",
+        "nDCG@5": 0.9558,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d04"
+      },
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "exportacion de cafe y cacao",
+        "tipo": "mixta",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d12"
+      },
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "inteligencia artificial y robotica",
+        "tipo": "mixta",
+        "nDCG@5": 0.8404,
+        "MRR": 1.0,
+        "R@5": 0.6,
+        "top1_doc": "d14"
+      },
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "turismo cultural",
+        "tipo": "mixta",
+        "nDCG@5": 0.5476,
+        "MRR": 0.5,
+        "R@5": 0.6,
+        "top1_doc": "d34"
+      },
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "energia limpia y presas hidroelectricas",
+        "tipo": "mixta",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d15"
+      },
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "conservacion de fauna y selva lacandona",
+        "tipo": "mixta",
+        "nDCG@5": 0.6259,
+        "MRR": 1.0,
+        "R@5": 0.5,
+        "top1_doc": "d16"
+      },
+      {
+        "motor": "Motor 1 · BM25 (Léxico)",
+        "codigo": "bm25",
+        "consulta": "infraestructura carretera y puentes",
+        "tipo": "mixta",
+        "nDCG@5": 0.5419,
+        "MRR": 1.0,
+        "R@5": 0.3333,
+        "top1_doc": "d10"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "UPCh",
+        "tipo": "lexica",
+        "nDCG@5": 0.6581,
+        "MRR": 1.0,
+        "R@5": 0.6667,
+        "top1_doc": "d07"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "canon del sumidero",
+        "tipo": "lexica",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d05"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "problemas de agua",
+        "tipo": "semantica",
+        "nDCG@5": 0.7585,
+        "MRR": 1.0,
+        "R@5": 0.75,
+        "top1_doc": "d50"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "temblor de tierra",
+        "tipo": "semantica",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d06"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "enfermedades transmitidas por mosquitos",
+        "tipo": "semantica",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d11"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "sequia y cultivos",
+        "tipo": "mixta",
+        "nDCG@5": 0.6653,
+        "MRR": 0.5,
+        "R@5": 1.0,
+        "top1_doc": "d45"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "exportacion de cafe y cacao",
+        "tipo": "mixta",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d12"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "inteligencia artificial y robotica",
+        "tipo": "mixta",
+        "nDCG@5": 0.8133,
+        "MRR": 1.0,
+        "R@5": 0.8,
+        "top1_doc": "d14"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "turismo cultural",
+        "tipo": "mixta",
+        "nDCG@5": 0.489,
+        "MRR": 1.0,
+        "R@5": 0.6,
+        "top1_doc": "d44"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "energia limpia y presas hidroelectricas",
+        "tipo": "mixta",
+        "nDCG@5": 0.858,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d33"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "conservacion de fauna y selva lacandona",
+        "tipo": "mixta",
+        "nDCG@5": 0.4834,
+        "MRR": 0.5,
+        "R@5": 0.75,
+        "top1_doc": "d39"
+      },
+      {
+        "motor": "Motor 2 · Embeddings (Denso)",
+        "codigo": "embeddings",
+        "consulta": "infraestructura carretera y puentes",
+        "tipo": "mixta",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d10"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "UPCh",
+        "tipo": "lexica",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d07"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "canon del sumidero",
+        "tipo": "lexica",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d05"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "problemas de agua",
+        "tipo": "semantica",
+        "nDCG@5": 0.9967,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d13"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "temblor de tierra",
+        "tipo": "semantica",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d06"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "enfermedades transmitidas por mosquitos",
+        "tipo": "semantica",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d11"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "sequia y cultivos",
+        "tipo": "mixta",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d04"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "exportacion de cafe y cacao",
+        "tipo": "mixta",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d12"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "inteligencia artificial y robotica",
+        "tipo": "mixta",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d14"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "turismo cultural",
+        "tipo": "mixta",
+        "nDCG@5": 0.9245,
+        "MRR": 1.0,
+        "R@5": 0.8,
+        "top1_doc": "d09"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "energia limpia y presas hidroelectricas",
+        "tipo": "mixta",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d15"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "conservacion de fauna y selva lacandona",
+        "tipo": "mixta",
+        "nDCG@5": 0.7314,
+        "MRR": 1.0,
+        "R@5": 0.75,
+        "top1_doc": "d16"
+      },
+      {
+        "motor": "Motor 3 · Híbrido (RRF + Reranker)",
+        "codigo": "hibrido",
+        "consulta": "infraestructura carretera y puentes",
+        "tipo": "mixta",
+        "nDCG@5": 1.0,
+        "MRR": 1.0,
+        "R@5": 1.0,
+        "top1_doc": "d10"
+      }
+    ]
+  }
+}
